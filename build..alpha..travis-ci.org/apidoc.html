@@ -1,0 +1,4474 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/apocas/dockerode#readme"
+
+    >dockerode (v2.4.3)</a>
+</h1>
+<h4>Docker Remote API module.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode">module dockerode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container">
+            function <span class="apidocSignatureSpan">dockerode.</span>Container
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Exec">
+            function <span class="apidocSignatureSpan">dockerode.</span>Exec
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image">
+            function <span class="apidocSignatureSpan">dockerode.</span>Image
+            <span class="apidocSignatureSpan">(modem, name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network">
+            function <span class="apidocSignatureSpan">dockerode.</span>Network
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Node">
+            function <span class="apidocSignatureSpan">dockerode.</span>Node
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin">
+            function <span class="apidocSignatureSpan">dockerode.</span>Plugin
+            <span class="apidocSignatureSpan">(modem, name, remote)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Secret">
+            function <span class="apidocSignatureSpan">dockerode.</span>Secret
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Service">
+            function <span class="apidocSignatureSpan">dockerode.</span>Service
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Task">
+            function <span class="apidocSignatureSpan">dockerode.</span>Task
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Volume">
+            function <span class="apidocSignatureSpan">dockerode.</span>Volume
+            <span class="apidocSignatureSpan">(modem, name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Container.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Exec.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Image.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Network.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Node.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Plugin.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Secret.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Service.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Task.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>Volume.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dockerode.</span>util</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Container">module dockerode.Container</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.Container">
+            function <span class="apidocSignatureSpan">dockerode.</span>Container
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Container.prototype">module dockerode.Container.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.attach">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>attach
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.changes">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>changes
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.commit">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>commit
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.copy">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>copy
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.exec">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>exec
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.export">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>export
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.getArchive">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>getArchive
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.infoArchive">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>infoArchive
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.kill">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>kill
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.logs">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>logs
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.pause">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>pause
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.putArchive">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>putArchive
+            <span class="apidocSignatureSpan">(file, opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.rename">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>rename
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.resize">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>resize
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.restart">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>restart
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.start">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>start
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.stats">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>stats
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.stop">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>stop
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.top">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>top
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.unpause">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>unpause
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.update">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>update
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Container.prototype.wait">
+            function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>wait
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Exec">module dockerode.Exec</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Exec.Exec">
+            function <span class="apidocSignatureSpan">dockerode.</span>Exec
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Exec.prototype">module dockerode.Exec.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Exec.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Exec.prototype.resize">
+            function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>resize
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Exec.prototype.start">
+            function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>start
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Image">module dockerode.Image</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.Image">
+            function <span class="apidocSignatureSpan">dockerode.</span>Image
+            <span class="apidocSignatureSpan">(modem, name)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Image.prototype">module dockerode.Image.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.get">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>get
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.history">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>history
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.push">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>push
+            <span class="apidocSignatureSpan">(opts, callback, auth)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Image.prototype.tag">
+            function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>tag
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Network">module dockerode.Network</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network.Network">
+            function <span class="apidocSignatureSpan">dockerode.</span>Network
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Network.prototype">module dockerode.Network.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network.prototype.connect">
+            function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>connect
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network.prototype.disconnect">
+            function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>disconnect
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Network.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Node">module dockerode.Node</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Node.Node">
+            function <span class="apidocSignatureSpan">dockerode.</span>Node
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Node.prototype">module dockerode.Node.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Node.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Node.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>remove
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Node.prototype.update">
+            function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>update
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Plugin">module dockerode.Plugin</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.Plugin">
+            function <span class="apidocSignatureSpan">dockerode.</span>Plugin
+            <span class="apidocSignatureSpan">(modem, name, remote)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Plugin.prototype">module dockerode.Plugin.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.configure">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>configure
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.disable">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>disable
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.enable">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>enable
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.privileges">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>privileges
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.pull">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>pull
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.push">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>push
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Plugin.prototype.upgrade">
+            function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>upgrade
+            <span class="apidocSignatureSpan">(auth, opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Secret">module dockerode.Secret</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Secret.Secret">
+            function <span class="apidocSignatureSpan">dockerode.</span>Secret
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Secret.prototype">module dockerode.Secret.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Secret.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Secret.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Secret.prototype.update">
+            function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>update
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Service">module dockerode.Service</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Service.Service">
+            function <span class="apidocSignatureSpan">dockerode.</span>Service
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Service.prototype">module dockerode.Service.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Service.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Service.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>remove
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Service.prototype.update">
+            function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>update
+            <span class="apidocSignatureSpan">(auth, opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Task">module dockerode.Task</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Task.Task">
+            function <span class="apidocSignatureSpan">dockerode.</span>Task
+            <span class="apidocSignatureSpan">(modem, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Task.prototype">module dockerode.Task.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Task.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Task.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Volume">module dockerode.Volume</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Volume.Volume">
+            function <span class="apidocSignatureSpan">dockerode.</span>Volume
+            <span class="apidocSignatureSpan">(modem, name)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.Volume.prototype">module dockerode.Volume.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Volume.prototype.inspect">
+            function <span class="apidocSignatureSpan">dockerode.Volume.prototype.</span>inspect
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.Volume.prototype.remove">
+            function <span class="apidocSignatureSpan">dockerode.Volume.prototype.</span>remove
+            <span class="apidocSignatureSpan">(opts, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dockerode.util">module dockerode.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.util.extend">
+            function <span class="apidocSignatureSpan">dockerode.util.</span>extend
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.util.parseRepositoryTag">
+            function <span class="apidocSignatureSpan">dockerode.util.</span>parseRepositoryTag
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dockerode.util.processArgs">
+            function <span class="apidocSignatureSpan">dockerode.util.</span>processArgs
+            <span class="apidocSignatureSpan">(opts, callback, defaultOpts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode" id="apidoc.module.dockerode">module dockerode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container" id="apidoc.element.dockerode.Container">
+        function <span class="apidocSignatureSpan">dockerode.</span>Container
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Container = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+
+  this.defaultOptions = {
+    top: {},
+    start: {},
+    commit: {},
+    stop: {},
+    pause: {},
+    unpause: {},
+    restart: {},
+    resize: {},
+    attach: {},
+    remove: {},
+    copy: {},
+    kill: {},
+    exec: {},
+    rename: {},
+    log: {},
+    stats: {},
+    getArchive: {},
+    infoArchive: {},
+    putArchive: {},
+    update: {}
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Exec" id="apidoc.element.dockerode.Exec">
+        function <span class="apidocSignatureSpan">dockerode.</span>Exec
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Exec = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image" id="apidoc.element.dockerode.Image">
+        function <span class="apidocSignatureSpan">dockerode.</span>Image
+        <span class="apidocSignatureSpan">(modem, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Image = function (modem, name) {
+  this.modem = modem;
+  this.name = name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network" id="apidoc.element.dockerode.Network">
+        function <span class="apidocSignatureSpan">dockerode.</span>Network
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Network = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Node" id="apidoc.element.dockerode.Node">
+        function <span class="apidocSignatureSpan">dockerode.</span>Node
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Node = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin" id="apidoc.element.dockerode.Plugin">
+        function <span class="apidocSignatureSpan">dockerode.</span>Plugin
+        <span class="apidocSignatureSpan">(modem, name, remote)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Plugin = function (modem, name, remote) {
+  this.modem = modem;
+  this.name = name;
+  this.remote = remote || name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Secret" id="apidoc.element.dockerode.Secret">
+        function <span class="apidocSignatureSpan">dockerode.</span>Secret
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Secret = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Service" id="apidoc.element.dockerode.Service">
+        function <span class="apidocSignatureSpan">dockerode.</span>Service
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Service = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Task" id="apidoc.element.dockerode.Task">
+        function <span class="apidocSignatureSpan">dockerode.</span>Task
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Task = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Volume" id="apidoc.element.dockerode.Volume">
+        function <span class="apidocSignatureSpan">dockerode.</span>Volume
+        <span class="apidocSignatureSpan">(modem, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Volume = function (modem, name) {
+  this.modem = modem;
+  this.name = name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Container" id="apidoc.module.dockerode.Container">module dockerode.Container</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.Container" id="apidoc.element.dockerode.Container.Container">
+        function <span class="apidocSignatureSpan">dockerode.</span>Container
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Container = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+
+  this.defaultOptions = {
+    top: {},
+    start: {},
+    commit: {},
+    stop: {},
+    pause: {},
+    unpause: {},
+    restart: {},
+    resize: {},
+    attach: {},
+    remove: {},
+    copy: {},
+    kill: {},
+    exec: {},
+    rename: {},
+    log: {},
+    stats: {},
+    getArchive: {},
+    infoArchive: {},
+    putArchive: {},
+    update: {}
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Container.prototype" id="apidoc.module.dockerode.Container.prototype">module dockerode.Container.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.attach" id="apidoc.element.dockerode.Container.prototype.attach">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>attach
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">attach = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.attach);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/attach?&#x27;,
+    method: &#x27;POST&#x27;,
+    isStream: true,
+    hijack: args.opts.hijack,
+    openStdin: args.opts.stdin,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, stream) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(stream);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, stream) {
+      args.callback(err, stream);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+``` js
+//tty:true
+docker.createContainer({ /*...*/ Tty: true /*...*/ }, function(err, container) {
+
+  /* ... */
+
+  container.<span class="apidocCodeKeywordSpan">attach</span>({stream: true, stdout: true, stderr: true}, function (err, stream) {
+    stream.pipe(process.stdout);
+  });
+
+  /* ... */
+}
+
+//tty:false
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.changes" id="apidoc.element.dockerode.Container.prototype.changes">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>changes
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">changes = function (callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/changes&#x27;,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.commit" id="apidoc.element.dockerode.Container.prototype.commit">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>commit
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">commit = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.commit);
+
+  args.opts.container = this.id;
+
+  var optsf = {
+    path: &#x27;/commit?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      201: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.copy" id="apidoc.element.dockerode.Container.prototype.copy">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>copy
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">copy = function (opts, callback) {
+  var self = this;
+  console.log(&#x27;container.copy is deprecated since Docker v1.8.x&#x27;);
+  var args = util.processArgs(opts, callback, this.defaultOptions.copy);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/copy&#x27;,
+    method: &#x27;POST&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.exec" id="apidoc.element.dockerode.Container.prototype.exec">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>exec
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exec = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.exec);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/exec&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      201: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(new Exec(self.modem, data.Id));
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      if (err) return args.callback(err, data);
+      args.callback(err, new Exec(self.modem, data.Id));
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+There is also support for [HTTP connection hijacking](https://docs.docker.com/engine/reference/api/docker_remote_api_v1.22/#3-2-
+hijacking),
+which allows for cleaner interactions with commands that work with stdin and stdout separately.
+
+```js
+docker.createContainer({Tty: false, /*... other options */}, function(err, container) {
+  container.<span class="apidocCodeKeywordSpan">exec</span>({Cmd: [&#x27;shasum&#x27;, &#x27;-&#x27;], AttachStdin: true, AttachStdout
+: true}, function(err, exec) {
+    exec.start({hijack: true, stdin: true}, function(err, stream) {
+// shasum can&#x27;t finish until after its stdin has been closed, telling it that it has
+// read all the bytes it needs to sum. Without a socket upgrade, there is no way to
+// close the write-side of the stream without also closing the read-side!
+fs.createReadStream(&#x27;node-v5.1.0.tgz&#x27;, &#x27;binary&#x27;).pipe(stream);
+
+// Fortunately, we have a regular TCP socket now, so when the readstream finishes and closes our
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.export" id="apidoc.element.dockerode.Container.prototype.export">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>export
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">export = function (callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/export&#x27;,
+    method: &#x27;GET&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.getArchive" id="apidoc.element.dockerode.Container.prototype.getArchive">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>getArchive
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getArchive = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.getArchive);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/archive?&#x27;,
+    method: &#x27;GET&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      400: &#x27;client error, bad parameters&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.infoArchive" id="apidoc.element.dockerode.Container.prototype.infoArchive">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>infoArchive
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">infoArchive = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.infoArchive);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/archive?&#x27;,
+    method: &#x27;HEAD&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      400: &#x27;client error, bad parameters&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.inspect" id="apidoc.element.dockerode.Container.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/json?&#x27;,
+    method: &#x27;GET&#x27;,
+    options: args.opts,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.kill" id="apidoc.element.dockerode.Container.prototype.kill">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>kill
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">kill = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.kill);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/kill?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.logs" id="apidoc.element.dockerode.Container.prototype.logs">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>logs
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">logs = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.log);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/logs?&#x27;,
+    method: &#x27;GET&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.pause" id="apidoc.element.dockerode.Container.prototype.pause">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>pause
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.pause);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/pause&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.putArchive" id="apidoc.element.dockerode.Container.prototype.putArchive">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>putArchive
+        <span class="apidocSignatureSpan">(file, opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">putArchive = function (file, opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.putArchive);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/archive?&#x27;,
+    method: &#x27;PUT&#x27;,
+    file: file,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      400: &#x27;client error, bad parameters&#x27;,
+      403: &#x27;client error, permission denied&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.remove" id="apidoc.element.dockerode.Container.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.remove);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;?&#x27;,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      400: &#x27;bad parameter&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.rename" id="apidoc.element.dockerode.Container.prototype.rename">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>rename
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rename = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.rename);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/rename?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.resize" id="apidoc.element.dockerode.Container.prototype.resize">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>resize
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resize = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.resize);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/resize?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      400: &#x27;bad parameter&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Tty: true,
+Cmd: [&#x27;/bin/bash&#x27;, &#x27;-c&#x27;, &#x27;tail -f /var/log/dmesg&#x27;],
+OpenStdin: false,
+StdinOnce: false
+}).then(function(container) {
+return container.start();
+}).then(function(container) {
+return container.<span class="apidocCodeKeywordSpan">resize</span>({
+  h: process.stdout.rows,
+  w: process.stdout.columns
+});
+}).then(function(container) {
+return container.stop();
+}).then(function(container) {
+return container.remove();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.restart" id="apidoc.element.dockerode.Container.prototype.restart">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>restart
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">restart = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.restart);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/restart&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.start" id="apidoc.element.dockerode.Container.prototype.start">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>start
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">start = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.start);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/start&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      304: &#x27;container already started&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.inspect(function (err, data) {
+  console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">start</span>(function (err, data) {
+  console.log(data);
+});
+
+container.remove(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.stats" id="apidoc.element.dockerode.Container.prototype.stats">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>stats
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stats = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.stats);
+  var isStream = true;
+  if (args.opts.stream === false) {
+    isStream = false;
+  }
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/stats?&#x27;,
+    method: &#x27;GET&#x27;,
+    isStream: isStream,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.stop" id="apidoc.element.dockerode.Container.prototype.stop">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>stop
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stop = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.stop);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/stop?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      304: &#x27;container already stopped&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return container.start();
+}).then(function(container) {
+  return container.resize({
+    h: process.stdout.rows,
+    w: process.stdout.columns
+  });
+}).then(function(container) {
+  return container.<span class="apidocCodeKeywordSpan">stop</span>();
+}).then(function(container) {
+  return container.remove();
+}).then(function(data) {
+  console.log(&#x27;container removed&#x27;);
+}).catch(function(err) {
+  console.log(err);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.top" id="apidoc.element.dockerode.Container.prototype.top">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>top
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">top = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.top);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/top?&#x27;,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.unpause" id="apidoc.element.dockerode.Container.prototype.unpause">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>unpause
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unpause = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.unpause);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/unpause&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.update" id="apidoc.element.dockerode.Container.prototype.update">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>update
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback, this.defaultOptions.update);
+
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/update&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      400: &#x27;bad parameter&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Container.prototype.wait" id="apidoc.element.dockerode.Container.prototype.wait">
+        function <span class="apidocSignatureSpan">dockerode.Container.prototype.</span>wait
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">wait = function (callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/containers/&#x27; + this.id + &#x27;/wait&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      400: &#x27;bad parameter&#x27;,
+      404: &#x27;no such container&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Exec" id="apidoc.module.dockerode.Exec">module dockerode.Exec</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Exec.Exec" id="apidoc.element.dockerode.Exec.Exec">
+        function <span class="apidocSignatureSpan">dockerode.</span>Exec
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Exec = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Exec.prototype" id="apidoc.module.dockerode.Exec.prototype">module dockerode.Exec.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Exec.prototype.inspect" id="apidoc.element.dockerode.Exec.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/exec/&#x27; + this.id + &#x27;/json&#x27;,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such exec&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      if (err) return callback(err, data);
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Exec.prototype.resize" id="apidoc.element.dockerode.Exec.prototype.resize">
+        function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>resize
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resize = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/exec/&#x27; + this.id + &#x27;/resize?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such exec&#x27;,
+      500: &#x27;container not running&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      if (err) return args.callback(err, data);
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Tty: true,
+Cmd: [&#x27;/bin/bash&#x27;, &#x27;-c&#x27;, &#x27;tail -f /var/log/dmesg&#x27;],
+OpenStdin: false,
+StdinOnce: false
+}).then(function(container) {
+return container.start();
+}).then(function(container) {
+return container.<span class="apidocCodeKeywordSpan">resize</span>({
+  h: process.stdout.rows,
+  w: process.stdout.columns
+});
+}).then(function(container) {
+return container.stop();
+}).then(function(container) {
+return container.remove();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Exec.prototype.start" id="apidoc.element.dockerode.Exec.prototype.start">
+        function <span class="apidocSignatureSpan">dockerode.Exec.prototype.</span>start
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">start = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/exec/&#x27; + this.id + &#x27;/start&#x27;,
+    method: &#x27;POST&#x27;,
+    isStream: true,
+    hijack: args.opts.hijack,
+    openStdin: args.opts.stdin,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;no such exec&#x27;,
+      409: &#x27;container stopped/paused&#x27;,
+      500: &#x27;container not running&#x27;
+    },
+    options: args.opts
+  };
+
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      if (err) return args.callback(err, data);
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.inspect(function (err, data) {
+  console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">start</span>(function (err, data) {
+  console.log(data);
+});
+
+container.remove(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Image" id="apidoc.module.dockerode.Image">module dockerode.Image</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.Image" id="apidoc.element.dockerode.Image.Image">
+        function <span class="apidocSignatureSpan">dockerode.</span>Image
+        <span class="apidocSignatureSpan">(modem, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Image = function (modem, name) {
+  this.modem = modem;
+  this.name = name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Image.prototype" id="apidoc.module.dockerode.Image.prototype">module dockerode.Image.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.get" id="apidoc.element.dockerode.Image.prototype.get">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>get
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (callback) {
+  var self = this;
+  var opts = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;/get&#x27;,
+    method: &#x27;GET&#x27;,
+    isStream: true,
+    statusCodes: {
+      200: true,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(opts, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(opts, function(err, data) {
+      if (err) return callback(err, data);
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.history" id="apidoc.element.dockerode.Image.prototype.history">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>history
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">history = function (callback) {
+  var self = this;
+  var opts = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;/history&#x27;,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such image&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(opts, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(opts, function(err, data) {
+      if (err) return callback(err, data);
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.inspect" id="apidoc.element.dockerode.Image.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var opts = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;/json&#x27;,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such image&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(opts, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(opts, function(err, data) {
+      if (err) return callback(err, data);
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.push" id="apidoc.element.dockerode.Image.prototype.push">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>push
+        <span class="apidocSignatureSpan">(opts, callback, auth)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (opts, callback, auth) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+  var isStream = true;
+  if (args.opts.stream === false) {
+    isStream = false;
+  }
+  var optsf = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;/push?&#x27;,
+    method: &#x27;POST&#x27;,
+    options: args.opts,
+    authconfig: args.opts.authconfig || auth,
+    isStream: isStream,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such image&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  delete optsf.options.authconfig;
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.remove" id="apidoc.element.dockerode.Image.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+
+  var optsf = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;?&#x27;,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such image&#x27;,
+      409: &#x27;conflict&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Image.prototype.tag" id="apidoc.element.dockerode.Image.prototype.tag">
+        function <span class="apidocSignatureSpan">dockerode.Image.prototype.</span>tag
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tag = function (opts, callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/images/&#x27; + this.name + &#x27;/tag?&#x27;,
+    method: &#x27;POST&#x27;,
+    options: opts,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      201: true,
+      400: &#x27;bad parameter&#x27;,
+      404: &#x27;no such image&#x27;,
+      409: &#x27;conflict&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Network" id="apidoc.module.dockerode.Network">module dockerode.Network</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network.Network" id="apidoc.element.dockerode.Network.Network">
+        function <span class="apidocSignatureSpan">dockerode.</span>Network
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Network = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Network.prototype" id="apidoc.module.dockerode.Network.prototype">module dockerode.Network.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network.prototype.connect" id="apidoc.element.dockerode.Network.prototype.connect">
+        function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>connect
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">connect = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/networks/&#x27; + this.id + &#x27;/connect&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      201: true,
+      404: &#x27;network or container is not found&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network.prototype.disconnect" id="apidoc.element.dockerode.Network.prototype.disconnect">
+        function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>disconnect
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">disconnect = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/networks/&#x27; + this.id + &#x27;/disconnect&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      201: true,
+      404: &#x27;network or container is not found&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network.prototype.inspect" id="apidoc.element.dockerode.Network.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var opts = {
+    path: &#x27;/networks/&#x27; + this.id,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such network&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(opts, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(opts, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Network.prototype.remove" id="apidoc.element.dockerode.Network.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Network.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/networks/&#x27; + this.id,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;no such network&#x27;,
+      409: &#x27;conflict&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Node" id="apidoc.module.dockerode.Node">module dockerode.Node</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Node.Node" id="apidoc.element.dockerode.Node.Node">
+        function <span class="apidocSignatureSpan">dockerode.</span>Node
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Node = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Node.prototype" id="apidoc.module.dockerode.Node.prototype">module dockerode.Node.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Node.prototype.inspect" id="apidoc.element.dockerode.Node.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/nodes/&#x27; + this.id,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such node&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Node.prototype.remove" id="apidoc.element.dockerode.Node.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>remove
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/nodes/&#x27; + this.id,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such node&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Node.prototype.update" id="apidoc.element.dockerode.Node.prototype.update">
+        function <span class="apidocSignatureSpan">dockerode.Node.prototype.</span>update
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (opts, callback) {
+  var self = this;
+  if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+    callback = opts;
+  }
+
+  var optsf = {
+    path: &#x27;/nodes/&#x27; + this.id + &#x27;/update?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such node&#x27;,
+      406: &#x27;node is not part of a swarm&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: opts
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Plugin" id="apidoc.module.dockerode.Plugin">module dockerode.Plugin</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.Plugin" id="apidoc.element.dockerode.Plugin.Plugin">
+        function <span class="apidocSignatureSpan">dockerode.</span>Plugin
+        <span class="apidocSignatureSpan">(modem, name, remote)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Plugin = function (modem, name, remote) {
+  this.modem = modem;
+  this.name = name;
+  this.remote = remote || name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Plugin.prototype" id="apidoc.module.dockerode.Plugin.prototype">module dockerode.Plugin.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.configure" id="apidoc.element.dockerode.Plugin.prototype.configure">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>configure
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">configure = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;/set&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;plugin not installed&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.disable" id="apidoc.element.dockerode.Plugin.prototype.disable">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>disable
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">disable = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;/disable&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.enable" id="apidoc.element.dockerode.Plugin.prototype.enable">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>enable
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">enable = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;/enable?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.inspect" id="apidoc.element.dockerode.Plugin.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;plugin is not installed&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.privileges" id="apidoc.element.dockerode.Plugin.prototype.privileges">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>privileges
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">privileges = function (callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/plugins/privileges?&#x27;,
+    method: &#x27;GET&#x27;,
+    options: {
+      &#x27;remote&#x27;: this.remote
+    },
+    statusCodes: {
+      200: true,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.pull" id="apidoc.element.dockerode.Plugin.prototype.pull">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>pull
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pull = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  if(args.opts._query &#x26;&#x26; !args.opts._query.name) {
+    args.opts._query.name = this.name;
+  }
+  if(args.opts._query &#x26;&#x26; !args.opts._query.remote) {
+    args.opts._query.remote = this.remote;
+  }
+
+  var optsf = {
+    path: &#x27;/plugins/pull?&#x27;,
+    method: &#x27;POST&#x27;,
+    isStream: true,
+    options: args.opts,
+    statusCodes: {
+      200: true, // unofficial, but proxies may return it
+      204: true,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+* `repoTag` - container image name (optionally with tag)
+  `myrepo/myname:withtag`
+* `opts` - extra options passed to create image.
+* `callback` - callback called when execution ends.
+
+``` js
+docker.<span class="apidocCodeKeywordSpan">pull</span>(&#x27;myrepo/myname:tag&#x27;, function (err, stream) {
+  // streaming output from pull...
+});
+```
+
+#### Pull from private repos
+
+`docker-modem` already base64 encodes the necessary auth object for you.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.push" id="apidoc.element.dockerode.Plugin.prototype.push">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>push
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;/push&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;plugin not installed&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.remove" id="apidoc.element.dockerode.Plugin.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;?&#x27;,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;plugin is not installed&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      if (err) return args.callback(err, data);
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Plugin.prototype.upgrade" id="apidoc.element.dockerode.Plugin.prototype.upgrade">
+        function <span class="apidocSignatureSpan">dockerode.Plugin.prototype.</span>upgrade
+        <span class="apidocSignatureSpan">(auth, opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">upgrade = function (auth, opts, callback) {
+  var self = this;
+  if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+    callback = opts;
+    opts = auth;
+    auth = opts.authconfig || undefined;
+  }
+
+  var optsf = {
+    path: &#x27;/plugins/&#x27; + this.name + &#x27;/upgrade?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;plugin not installed&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    authconfig: auth,
+    options: opts
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Secret" id="apidoc.module.dockerode.Secret">module dockerode.Secret</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Secret.Secret" id="apidoc.element.dockerode.Secret.Secret">
+        function <span class="apidocSignatureSpan">dockerode.</span>Secret
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Secret = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Secret.prototype" id="apidoc.module.dockerode.Secret.prototype">module dockerode.Secret.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Secret.prototype.inspect" id="apidoc.element.dockerode.Secret.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/secrets/&#x27; + this.id,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;secret not found&#x27;,
+      406: &#x27;node is not part of a swarm&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Secret.prototype.remove" id="apidoc.element.dockerode.Secret.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/secrets/&#x27; + this.id,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;secret not found&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Secret.prototype.update" id="apidoc.element.dockerode.Secret.prototype.update">
+        function <span class="apidocSignatureSpan">dockerode.Secret.prototype.</span>update
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (opts, callback) {
+  var self = this;
+  if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+    callback = opts;
+  }
+
+  var optsf = {
+    path: &#x27;/secrets/&#x27; + this.id + &#x27;/update?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;secret not found&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: opts
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Service" id="apidoc.module.dockerode.Service">module dockerode.Service</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Service.Service" id="apidoc.element.dockerode.Service.Service">
+        function <span class="apidocSignatureSpan">dockerode.</span>Service
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Service = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Service.prototype" id="apidoc.module.dockerode.Service.prototype">module dockerode.Service.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Service.prototype.inspect" id="apidoc.element.dockerode.Service.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/services/&#x27; + this.id,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such service&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Service.prototype.remove" id="apidoc.element.dockerode.Service.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>remove
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (callback) {
+  var self = this;
+  var optsf = {
+    path: &#x27;/services/&#x27; + this.id,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      200: true,
+      204: true,
+      404: &#x27;no such service&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Service.prototype.update" id="apidoc.element.dockerode.Service.prototype.update">
+        function <span class="apidocSignatureSpan">dockerode.Service.prototype.</span>update
+        <span class="apidocSignatureSpan">(auth, opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (auth, opts, callback) {
+  var self = this;
+  if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+    callback = opts;
+    opts = auth;
+    auth = opts.authconfig || undefined;
+  }
+
+  var optsf = {
+    path: &#x27;/services/&#x27; + this.id + &#x27;/update?&#x27;,
+    method: &#x27;POST&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such service&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    authconfig: auth,
+    options: opts
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        self.output = data;
+        resolve(self);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Task" id="apidoc.module.dockerode.Task">module dockerode.Task</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Task.Task" id="apidoc.element.dockerode.Task.Task">
+        function <span class="apidocSignatureSpan">dockerode.</span>Task
+        <span class="apidocSignatureSpan">(modem, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Task = function (modem, id) {
+  this.modem = modem;
+  this.id = id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Task.prototype" id="apidoc.module.dockerode.Task.prototype">module dockerode.Task.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Task.prototype.inspect" id="apidoc.element.dockerode.Task.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Task.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/tasks/&#x27; + this.id,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;unknown task&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Volume" id="apidoc.module.dockerode.Volume">module dockerode.Volume</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Volume.Volume" id="apidoc.element.dockerode.Volume.Volume">
+        function <span class="apidocSignatureSpan">dockerode.</span>Volume
+        <span class="apidocSignatureSpan">(modem, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Volume = function (modem, name) {
+  this.modem = modem;
+  this.name = name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.Volume.prototype" id="apidoc.module.dockerode.Volume.prototype">module dockerode.Volume.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Volume.prototype.inspect" id="apidoc.element.dockerode.Volume.prototype.inspect">
+        function <span class="apidocSignatureSpan">dockerode.Volume.prototype.</span>inspect
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function (callback) {
+  var self = this;
+
+  var optsf = {
+    path: &#x27;/volumes/&#x27; + this.name,
+    method: &#x27;GET&#x27;,
+    statusCodes: {
+      200: true,
+      404: &#x27;no such volume&#x27;,
+      500: &#x27;server error&#x27;
+    }
+  };
+
+  if(callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Manipulating a container:
+
+``` js
+// create a container entity. does not query API
+var container = docker.getContainer(&#x27;71501a8ab0f8&#x27;);
+
+// query API for container info
+container.<span class="apidocCodeKeywordSpan">inspect</span>(function (err, data) {
+  console.log(data);
+});
+
+container.start(function (err, data) {
+  console.log(data);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.Volume.prototype.remove" id="apidoc.element.dockerode.Volume.prototype.remove">
+        function <span class="apidocSignatureSpan">dockerode.Volume.prototype.</span>remove
+        <span class="apidocSignatureSpan">(opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (opts, callback) {
+  var self = this;
+  var args = util.processArgs(opts, callback);
+
+  var optsf = {
+    path: &#x27;/volumes/&#x27; + this.name,
+    method: &#x27;DELETE&#x27;,
+    statusCodes: {
+      204: true,
+      404: &#x27;no such volume&#x27;,
+      409: &#x27;conflict&#x27;,
+      500: &#x27;server error&#x27;
+    },
+    options: args.opts
+  };
+
+  if(args.callback === undefined) {
+    return new this.modem.Promise(function(resolve, reject) {
+      self.modem.dial(optsf, function(err, data) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  } else {
+    this.modem.dial(optsf, function(err, data) {
+      args.callback(err, data);
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(data);
+});
+
+container.start(function (err, data) {
+console.log(data);
+});
+
+container.<span class="apidocCodeKeywordSpan">remove</span>(function (err, data) {
+console.log(data);
+});
+
+// promises are supported
+docker.createContainer({
+Image: &#x27;ubuntu&#x27;,
+AttachStdin: false,
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dockerode.util" id="apidoc.module.dockerode.util">module dockerode.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.util.extend" id="apidoc.element.dockerode.util.extend">
+        function <span class="apidocSignatureSpan">dockerode.util.</span>extend
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">extend = function (obj) {
+  each.call(slice.call(arguments, 1), function(source) {
+    if (source) {
+      for (var prop in source) {
+        obj[prop] = source[prop];
+      }
+    }
+  });
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+module.exports.processArgs = function(opts, callback, defaultOpts) {
+ if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+   callback = opts;
+   opts = null;
+ }
+ return {
+   callback: callback,
+   opts: module.exports.<span class="apidocCodeKeywordSpan">extend</span>({}, defaultOpts, opts)
+ };
+};
+
+
+/**
+* Parse the given repo tag name (as a string) and break it out into repo/tag pair.
+* // if given the input http://localhost:8080/woot:latest
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.util.parseRepositoryTag" id="apidoc.element.dockerode.util.parseRepositoryTag">
+        function <span class="apidocSignatureSpan">dockerode.util.</span>parseRepositoryTag
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseRepositoryTag = function (input) {
+  var separatorPos;
+  var digestPos = input.indexOf(&#x27;@&#x27;);
+  var colonPos = input.lastIndexOf(&#x27;:&#x27;);
+  // @ symbol is more important
+  if (digestPos &#x3e;= 0) {
+    separatorPos = digestPos;
+  } else if (colonPos &#x3e;= 0) {
+    separatorPos = colonPos;
+  } else {
+    // no colon nor @
+    return {
+      repository: input
+    };
+  }
+
+  // last colon is either the tag (or part of a port designation)
+  var tag = input.slice(separatorPos + 1);
+
+  // if it contains a / its not a tag and is part of the url
+  if (tag.indexOf(&#x27;/&#x27;) === -1) {
+    return {
+      repository: input.slice(0, separatorPos),
+      tag: tag
+    };
+  }
+
+  return {
+    repository: input
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dockerode.util.processArgs" id="apidoc.element.dockerode.util.processArgs">
+        function <span class="apidocSignatureSpan">dockerode.util.</span>processArgs
+        <span class="apidocSignatureSpan">(opts, callback, defaultOpts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">processArgs = function (opts, callback, defaultOpts) {
+  if (!callback &#x26;&#x26; typeof opts === &#x27;function&#x27;) {
+    callback = opts;
+    opts = null;
+  }
+  return {
+    callback: callback,
+    opts: module.exports.extend({}, defaultOpts, opts)
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
