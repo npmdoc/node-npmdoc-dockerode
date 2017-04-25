@@ -1,4 +1,7 @@
-# api documentation for  [dockerode (v2.4.3)](https://github.com/apocas/dockerode#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-dockerode.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-dockerode) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-dockerode.svg)](https://travis-ci.org/npmdoc/node-npmdoc-dockerode)
+# npmdoc-dockerode
+
+#### basic api documentation for  [dockerode (v2.4.3)](https://github.com/apocas/dockerode#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-dockerode.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-dockerode) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-dockerode.svg)](https://travis-ci.org/npmdoc/node-npmdoc-dockerode)
+
 #### Docker Remote API module.
 
 [![NPM](https://nodei.co/npm/dockerode.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/dockerode)
@@ -176,7 +179,8 @@
     "scripts": {
         "test": "./node_modules/mocha/bin/mocha -R spec"
     },
-    "version": "2.4.3"
+    "version": "2.4.3",
+    "bin": {}
 }
 ```
 
